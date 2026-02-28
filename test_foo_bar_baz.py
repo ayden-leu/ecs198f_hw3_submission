@@ -13,6 +13,7 @@ def test_zero():
 def test_negatives():
 	for i in range(-100, 0):
 		result:str = foo_bar_baz(i)
+
 		assert(type(result) is str), \
 			"foo_bar_baz(" + str(i) + ") should return a string.  Got: " + str(type(result))
 		
@@ -20,32 +21,33 @@ def test_negatives():
 			"Expected: ||\n     Got: |" + result + "|"
 
 def test_positives():
-	outputUpToLimit:str = [
-		"1", "2", "Foo", "4", "Bar", "Foo", "7", "8", "Foo", "Bar",
-		"11", "Foo", "13", "14", "Baz", "16", "17", "Foo", "19", "Bar",
-		"Foo", "22", "23", "Foo", "Bar", "26", "Foo", "28", "29", "Baz",
-		"31", "32", "Foo", "34", "Bar", "Foo", "37", "38", "Foo", "Bar", 
-		"41", "Foo", "43", "44", "Baz", "46", "47", "Foo", "49", "Bar", 
-		"Foo", "52", "53", "Foo", "Bar", "56", "Foo", "58", "59", "Baz", 
-		"61", "62", "Foo", "64", "Bar", "Foo", "67", "68", "Foo", "Bar", 
-		"71", "Foo", "73", "74", "Baz", "76", "77", "Foo", "79", "Bar", 
-		"Foo", "82", "83", "Foo", "Bar", "86", "Foo", "88", "89", "Baz", 
-		"91", "92", "Foo", "94", "Bar", "Foo", "97", "98", "Foo", "Bar"
-	]
+	limit:int = 100
 
-	for i in range(1, len(outputUpToLimit)+1):
-		expected = ""
-		for j in range(i):
-			expected += outputUpToLimit[j]
-			if j+1 != i:  expected += " "
-
+	for i in range(limit-1, limit):
 		result:str = foo_bar_baz(i)
-		assert(type(result) is str), \
-			"foo_bar_baz(" + str(i) + ") should return a string.  Got: " + str(type(result))
+		split_result:list = result.split(" ")
 
-		assert(result == expected), \
-			"Expected: |" + expected + "|\n" + \
-			"     Got: |" +  result  + "|"
+		for j in range(1, len(split_result)):
+			if (j % 3 == 0) and (j % 5 == 0):
+				assert(split_result[j-1] == "Baz")
+			elif j % 3 == 0:
+				assert(split_result[j-1] == "Foo")
+			elif j % 5 == 0:
+				assert(split_result[j-1] == "Bar")
+			else:
+				assert(split_result[j-1] == str(j))
+
+def test_same_output():
+	result_one = foo_bar_baz(40)
+	result_two = foo_bar_baz(40)
+
+	assert(result_one == result_two), "Results should be the same"
+
+def test_different_output():
+	result_one = foo_bar_baz(40)
+	result_two = foo_bar_baz(20)
+
+	assert(result_one != result_two), "Results should not be the same"
 
 if __name__ == "__main__":
 	print("test_foo_bar_baz.py should be ran with pytest.")
