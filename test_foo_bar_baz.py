@@ -49,6 +49,19 @@ def test_different_output():
 
 	assert(result_one != result_two), "Results should not be the same"
 
+def test_ok_whats_being_outputted_im_curious_1(capsys):
+	result_one = foo_bar_baz(10)
+	assert(result_one == 10)
+def test_ok_whats_being_outputted_im_curious_2(capsys):
+	result_two = foo_bar_baz(20)
+	assert(result_two == 20)
+def test_ok_whats_being_outputted_im_curious_3(capsys):
+	result_three = foo_bar_baz(30)
+	assert(result_three == 30)
+def test_ok_whats_being_outputted_im_curious_4(capsys):
+	result_four = foo_bar_baz(40)
+	assert(result_four == 40)
+
 if __name__ == "__main__":
 	print("test_foo_bar_baz.py should be ran with pytest.")
 
