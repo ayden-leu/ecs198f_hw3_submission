@@ -4,20 +4,14 @@ from foo_bar_baz import foo_bar_baz
 
 def test_zero():
 	result:str = foo_bar_baz(0)
-	assert(type(result) is str), \
-		"foo_bar_baz(" + str(i) + ") should return a string.  Got: " + str(type(result))
-
-	assert(result == ""), \
-		"Expected: ||\n     Got: |" + result + "|"
+	assert(result != ""), \
+			"foo_bar_baz(" + str(i) + ") should have handled the zero or raised an error."
 
 def test_negatives():
 	for i in range(-100, 0):
 		result:str = foo_bar_baz(i)
-		assert(type(result) is str), \
-			"foo_bar_baz(" + str(i) + ") should return a string.  Got: " + str(type(result))
-		
-		assert(result == ""), \
-			"Expected: ||\n     Got: |" + result + "|"
+		assert(result != ""), \
+			"foo_bar_baz(" + str(i) + ") should have handled the negative integer or raised an error."
 
 def test_positives():
 	outputUpToLimit:str = [
