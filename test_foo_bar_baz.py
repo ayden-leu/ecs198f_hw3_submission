@@ -5,7 +5,7 @@ from foo_bar_baz import foo_bar_baz
 def test_zero():
 	result:str = foo_bar_baz(0)
 	assert(result != ""), \
-			"foo_bar_baz(" + str(i) + ") should have handled the zero or raised an error."
+		"foo_bar_baz(0) should have handled the zero or raised an error."
 
 def test_negatives():
 	for i in range(-100, 0):
