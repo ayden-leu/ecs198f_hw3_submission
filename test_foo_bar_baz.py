@@ -49,48 +49,35 @@ def test_different_output():
 
 	assert(result_one != result_two), "Results should not be the same"
 
-def test_ok_whats_being_outputted_im_curious_1(capsys):
-	result_one = foo_bar_baz(10)
-	assert(result_one == 10)
-def test_ok_whats_being_outputted_im_curious_2(capsys):
-	result_two = foo_bar_baz(20)
-	assert(result_two == 20)
-def test_ok_whats_being_outputted_im_curious_3(capsys):
-	result_three = foo_bar_baz(30)
-	assert(result_three == 30)
-def test_ok_whats_being_outputted_im_curious_4(capsys):
-	result_four = foo_bar_baz(40)
-	assert(result_four == 40)
-
 if __name__ == "__main__":
 	print("test_foo_bar_baz.py should be ran with pytest.")
 
 # I assume that crashing the program when given a non-integer input is supposed to happen.
 # If not, then uncomment the below tests.
 
-# def test_input_float():
-# 	result:str = foo_bar_baz(3.5)
-# 	assert(type(result) is str), \
-# 		"foo_bar_baz(" + str(i) + ") should return a string.  Got: " + str(type(result))
+def test_input_float():
+	result:str = foo_bar_baz(3.5)
+	assert(type(result) is str), \
+		"foo_bar_baz(" + str(i) + ") should return a string.  Got: " + str(type(result))
 
-# 	assert(result == ""), \
-# 		'Expected: ""\n     Got: ' + result
+	assert(result == ""), \
+		'Expected: ""\n     Got: ' + result
 
-# def test_input_string():
-# 	result:str = foo_bar_baz("a string")
-# 	assert(type(result) is str), \
-# 		"foo_bar_baz(" + str(i) + ") should return a string.  Got: " + str(type(result))
+def test_input_string():
+	result:str = foo_bar_baz("a string")
+	assert(type(result) is str), \
+		"foo_bar_baz(" + str(i) + ") should return a string.  Got: " + str(type(result))
 
-# 	assert(result == ""), \
-# 		'Expected: ""\n     Got: ' + result
+	assert(result == ""), \
+		'Expected: ""\n     Got: ' + result
 
-# def test_input_callable():
-# 	def example_func():
-# 		print("hi!")
+def test_input_callable():
+	def example_func():
+		print("hi!")
 
-# 	result:str = foo_bar_baz(example_func)
-# 	assert(type(result) is str), \
-# 		"foo_bar_baz(" + str(i) + ") should return a string.  Got: " + str(type(result))
+	result:str = foo_bar_baz(example_func)
+	assert(type(result) is str), \
+		"foo_bar_baz(" + str(i) + ") should return a string.  Got: " + str(type(result))
 
-# 	assert(result == ""), \
-# 		'Expected: ""\n     Got: ' + result
+	assert(result == ""), \
+		'Expected: ""\n     Got: ' + result
